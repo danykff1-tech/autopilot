@@ -363,18 +363,19 @@
             <h2>Join Our Exclusive Waitlist</h2>
             <p>Be among the first to experience the future of business automation. Limited spots available for early adopters.</p>
             
-            <form id="waitlist-form">
+            <!-- FORMSPREE INTEGRATION -->
+            <form id="waitlist-form" action="https://formspree.io/f/xzdjkgwp" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Enter your full name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Business Email</label>
-                    <input type="email" id="email" placeholder="Enter your work email" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your work email" required>
                 </div>
                 <div class="form-group">
                     <label for="company">Company Name</label>
-                    <input type="text" id="company" placeholder="Enter your company name">
+                    <input type="text" id="company" name="company" placeholder="Enter your company name">
                 </div>
                 <button type="submit" class="btn btn-primary">Reserve My Spot</button>
             </form>
@@ -404,27 +405,17 @@
     </footer>
 
     <script>
+        // Handle form submission
         document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            
-            // In a real implementation, you would send this data to your server
-            console.log('Form submitted:', { name, email, company });
-            
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
+            // Show success message after a short delay
             setTimeout(() => {
-                document.getElementById('success-message').style.display = 'none';
-            }, 5000);
+                document.getElementById('success-message').style.display = 'block';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 5000);
+            }, 500);
         });
         
         // Smooth scrolling for anchor links
